@@ -64,13 +64,12 @@ Combining the two equations above and performing the integration analytically we
 
 $$ k_{\chi_0}(\chi)= \sum\limits_{i\in\chi} \sum\limits_{j\in\chi_0} \pi^{3/2} \sigma^3  \exp\left(-\frac{|\mathbf{r}_i-\mathbf{r}^0_j|^2} {4\sigma^2} \right). $$
 
-The kernel is finally normalized,
+The kernel is finally normalized, such that $ \tilde{k}_{\chi_0}(\chi_0)=1 $, in the following way,
 
 $$ \tilde{k}_{\chi_0}(\chi)=\frac{1}{n}\sum\limits_{i\in\chi}\sum\limits_{j\in\chi_0}\exp\left(-\frac{|\mathbf{r}_i-\mathbf{r}^0_j|^2}{4\sigma^2}\right), $$
 
 
-such that $ \tilde{k}_{\chi_0}(\chi_0)=1 $.
-We note that using the normalization above, the measure looses the symmetry property $ k_{\chi_0}(\chi)=k_{\chi}(\chi_0) $.
+#We note that using the normalization above, the measure looses the symmetry property $ k_{\chi_0}(\chi)=k_{\chi}(\chi_0) $.
 
 The definition above is only useful for Bravais lattices since these have a single, unique atomic environment.
 The kernel can be generalized to crystal structures described as a lattice with a basis of more than one atom.
