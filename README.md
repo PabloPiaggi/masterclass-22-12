@@ -64,7 +64,7 @@ Combining the two equations above and performing the integration analytically we
 
 $$ k_{\chi_0}(\chi)= \sum\limits_{i\in\chi} \sum\limits_{j\in\chi_0} \pi^{3/2} \sigma^3  \exp\left(-\frac{|\mathbf{r}_i-\mathbf{r}^0_j|^2} {4\sigma^2} \right). $$
 
-The kernel is finally normalized, such that $k_{\chi_0}(\chi_{0})$, in the following way,
+The kernel is finally normalized, such that $k_{\chi_0}(\chi_{0})=1$, in the following way,
 
 $$ \tilde{k}_{\chi_0}(\chi)=\frac{1}{n}\sum\limits_{i\in\chi}\sum\limits_{j\in\chi_0}\exp\left(-\frac{|\mathbf{r}_i-\mathbf{r}^0_j|^2}{4\sigma^2}\right), $$
 
@@ -73,7 +73,7 @@ The kernel can be generalized to crystal structures described as a lattice with 
 As discussed above, in this case there is more than one type of environment.
 We consider the case of $M$ environments $X = \chi_1,\chi_2,...,\chi_M$ and we define the kernel through a best match strategy:
 
-$$ \tilde{k}_X(\chi)= \frac{1}{\lambda}\log\left(\sum\limits_{l=1}^{M}\exp\left(\lambda\:\tilde{k}_{\chi_l}(\chi)\right)\right). $$
+$$ \tilde{k}_{X}(\chi)= \frac{1}{\lambda}\log\left( \sum\limits_{l=1}^{M} \exp\left(\lambda \tilde{k}_{\chi_l}(\chi)\right)\right). $$
 
 For a large enough $\lambda$ this expression will select the largest $\tilde{k}_{\chi_l}(\chi)$ with $\chi_l\in X$.
 
@@ -124,10 +124,10 @@ Then cd to the folder ```1-distributions/liquid``` and run again the same comman
 These commands will run simulations of the bulk liquid and bulk solid at 1 bar and 375 K.
 I have chosen this temperature because it is close to coexistence for these phases.
 The files start.lmp are the LAMMPS input and they specify that we are doing a NPT simulations.
-The output of these runs are in the files log.lammps, dump.na, and out.dcd .
-log.lammps is a log file that also contains some thermodynamic ouput.
-dump.na is the trajectory is LAMMPS dump atom format and it is useful for visualization with [Ovito](https://www.ovito.org/).
-out.dcd is the trajectory in DCD format, which is useful to postprocess directly using PLUMED's driver, as we shall see.
+The output of these runs are in the files ```log.lammps```, ```dump.na```, and ```out.dcd```.
+```log.lammps``` is a log file that also contains some thermodynamic ouput.
+```dump.na``` is the trajectory is LAMMPS dump atom format and it is useful for visualization with [Ovito](https://www.ovito.org/).
+```out.dcd``` is the trajectory in DCD format, which is useful to postprocess directly using PLUMED's driver, as we shall see.
 
 Once that these simulations have completed, we will compute the distributions of the environment similarity kernel using this input
 
@@ -157,7 +157,7 @@ The action HISTOGRAM will compute the normalized histogram using all per-atom va
 We have to compute these histograms for different values of SIGMA and this can be done with the script run.sh in the folder 1-distributions (execute the command ./run.sh > results.txt).
 This script will calculate the distributions and their overlaps for different SIGMA.
 The overlap $O(p,q)$ between two distributions $p(x)$ and $q(x)$ can be defined in a variety of ways. Here we use,
-$O(p,q) = \int dx \: min[p(x),q(x)]$
+$$O(p,q) = \int dx min[p(x),q(x)]$$
 
 The output of the script will have two columns, the sigma value used and the overlap between the liquid and solid distributions of the kernel for that sigma.
 The best choice of SIGMA will be the one that minimizes the overlap which in this case should be around 0.07 nm.
