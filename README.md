@@ -58,15 +58,15 @@ that describe, for instance, the nearest neighbors in a given crystal structure.
 
 The environments $\chi$ and $\chi_0$ are compared using the kernel,
 
-$k_{\chi_0}(\chi)= \int d\mathbf{r} \rho_{\chi}(\mathbf{r}) \rho_{\chi_0}(\mathbf{r}) .$
+$$ k_{\chi_0}(\chi)= \int d\mathbf{r} \rho_{\chi}(\mathbf{r}) \rho_{\chi_0}(\mathbf{r}) . $$
 
 Combining the two equations above and performing the integration analytically we obtain,
 
-$k_{\chi_0}(\chi)= \sum\limits_{i\in\chi} \sum\limits_{j\in\chi_0} \pi^{3/2} \sigma^3  \exp\left(-\frac{|\mathbf{r}_i-\mathbf{r}^0_j|^2} {4\sigma^2} \right).$
+$$i k_{\chi_0}(\chi)= \sum\limits_{i\in\chi} \sum\limits_{j\in\chi_0} \pi^{3/2} \sigma^3  \exp\left(-\frac{|\mathbf{r}_i-\mathbf{r}^0_j|^2} {4\sigma^2} \right). $$
 
 The kernel is finally normalized,
 
-$\tilde{k}_{\chi_0}(\chi)=\frac{1}{n}\sum\limits_{i\in\chi}\sum\limits_{j\in\chi_0}\exp\left(-\frac{|\mathbf{r}_i-\mathbf{r}^0_j|^2}{4\sigma^2}\right),$
+$$ \tilde{k}_{\chi_0}(\chi)=\frac{1}{n}\sum\limits_{i\in\chi}\sum\limits_{j\in\chi_0}\exp\left(-\frac{|\mathbf{r}_i-\mathbf{r}^0_j|^2}{4\sigma^2}\right), $$
 
 such that $\tilde{k}_{\chi_0}(\chi_0)=1$.
 We note that using the normalization above, the measure looses the symmetry property $k_{\chi_0}(\chi)=k_{\chi}(\chi_0)$.
@@ -76,7 +76,7 @@ The kernel can be generalized to crystal structures described as a lattice with 
 As discussed above, in this case there is more than one type of environment.
 We consider the case of $M$ environments $X = \chi_1,\chi_2,...,\chi_M$ and we define the kernel through a best match strategy:
 
-$\tilde{k}_X(\chi)= \frac{1}{}\lambda}\log\left(\sum\limits_{l=1}^{M}\exp\left(\lambda\:\tilde{k}_{\chi_l}(\chi)\right)\right).$
+$$ \tilde{k}_X(\chi)= \frac{1}{}\lambda}\log\left(\sum\limits_{l=1}^{M}\exp\left(\lambda\:\tilde{k}_{\chi_l}(\chi)\right)\right). $$
 
 For a large enough $\lambda$ this expression will select the largest $\tilde{k}_{\chi_l}(\chi)$ with $\chi_l\in X$.
 
