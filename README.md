@@ -50,37 +50,37 @@ Unlike SOAPs, this kernel will be non rotationally invariant and thus will break
 The starting point for the definition of our CV is the local atomic density around a given atom.
 We consider an environment $\chi$ around this atom and we define the density by,
 $\rho_{\chi}(\mathbf{r})=\sum\limits_{i\in\chi} \exp\left(- \frac{|\mathbf{r}_i-\mathbf{r}|^2} {2\sigma^2} \right),$
-where $i$ runs over the neighbors in the environment $\chi$, \f$\sigma\f$ is a broadening parameter, and \f$\mathbf{r}_i\f$ are the
+where $i$ runs over the neighbors in the environment $\chi$, $\sigma$ is a broadening parameter, and $\mathbf{r}_i$ are the
 coordinates of the neighbors relative to the central atom.
 We will see later how the best $\sigma$ can be rigorously determined.
-We now define a single reference environment $\chi_0$ that contains \f$n\f$ reference positions $\{\mathbf{r}^0_1,...,\mathbf{r}^0_n\}$
+We now define a single reference environment $\chi_0$ that contains $n$ reference positions $\{\mathbf{r}^0_1,...,\mathbf{r}^0_n\}$
 that describe, for instance, the nearest neighbors in a given crystal structure.
 
-The environments $\chi\f$ and \f$\chi_0$ are compared using the kernel,
+The environments $\chi$ and $\chi_0$ are compared using the kernel,
 
-$ k_{\chi_0}(\chi)= \int d\mathbf{r} \rho_{\chi}(\mathbf{r}) \rho_{\chi_0}(\mathbf{r}) .$
+$k_{\chi_0}(\chi)= \int d\mathbf{r} \rho_{\chi}(\mathbf{r}) \rho_{\chi_0}(\mathbf{r}) .$
 
 Combining the two equations above and performing the integration analytically we obtain,
 
-$k_{\chi_0}(\chi)= \sum\limits_{i\in\chi} \sum\limits_{j\in\chi_0} \pi^{3/2} \sigma^3  \exp\left(- \frac{|\mathbf{r}_i-\mathbf{r}^0_j|^2} {4\sigma^2} \right). $
+$k_{\chi_0}(\chi)= \sum\limits_{i\in\chi} \sum\limits_{j\in\chi_0} \pi^{3/2} \sigma^3  \exp\left(- \frac{|\mathbf{r}_i-\mathbf{r}^0_j|^2} {4\sigma^2} \right).$
 
 The kernel is finally normalized,
 
-$\tilde{k}_{\chi_0}(\chi)  = \frac{1}{n} \sum\limits_{i\in\chi} \sum\limits_{j\in\chi_0} \exp\left( - \frac{|\mathbf{r}_i-\mathbf{r}^0_j|^2} {4\sigma^2} \right), $
+$\tilde{k}_{\chi_0}(\chi)  = \frac{1}{n} \sum\limits_{i\in\chi} \sum\limits_{j\in\chi_0} \exp\left( - \frac{|\mathbf{r}_i-\mathbf{r}^0_j|^2} {4\sigma^2} \right),$
 
 such that $\tilde{k}_{\chi_0}(\chi_0) = 1$.
-We note that using the normalization above, the measure looses the symmetry property $ k_{\chi_0}(\chi) = k_{\chi}(\chi_0)  $.
+We note that using the normalization above, the measure looses the symmetry property $k_{\chi_0}(\chi) = k_{\chi}(\chi_0)$.
 
 The definition above is only useful for Bravais lattices since these have a single, unique atomic environment.
 The kernel can be generalized to crystal structures described as a lattice with a basis of more than one atom.
 As discussed above, in this case there is more than one type of environment.
-We consider the case of \f$M\f$ environments $X = \chi_1,\chi_2,...,\chi_M$ and we define the kernel through a best match strategy:
+We consider the case of $M$ environments $X = \chi_1,\chi_2,...,\chi_M$ and we define the kernel through a best match strategy:
 
 $\tilde{k}_X(\chi)= \frac{1}{\lambda} \log \left ( \sum\limits_{l=1}^{M}\exp \left (\lambda \: \tilde{k}_{\chi_l}(\chi) \right ) \right ).$
 
-For a large enough \f$\lambda\f$ this expression will select the largest $\tilde{k}_{\chi_l}(\chi)$ with $\chi_l \in X$.
+For a large enough $\lambda$ this expression will select the largest $\tilde{k}_{\chi_l}(\chi)$ with $\chi_l \in X$.
 
-$ \tilde{k}_X(\chi) $ is a per-atom quantity and we will have to compute global functions of these quantities, for instance, the mean or the number of atoms with at $ \tilde{k}_X(\chi) $ larger than some value.
+$\tilde{k}_X(\chi)$ is a per-atom quantity and we will have to compute global functions of these quantities, for instance, the mean or the number of atoms with at $\tilde{k}_X(\chi)$ larger than some value.
 
 ## The system: Sodium as the alanine dipeptide of solids
 
@@ -103,7 +103,6 @@ ENVIRONMENTSIMILARITY ...
  LATTICE_CONSTANTS=0.423
  SIGMA=0.07
 ... ENVIRONMENTSIMILARITY
-
 ```
 
 Here we have chosen the bcc crystal structure with a lattice constant of 0.423 nm which is appropriate for bcc sodium.
