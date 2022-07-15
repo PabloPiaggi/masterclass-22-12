@@ -64,7 +64,7 @@ Combining the two equations above and performing the integration analytically we
 
 $$ k_{\chi_0}(\chi)= \sum\limits_{i\in\chi} \sum\limits_{j\in\chi_0} \pi^{3/2} \sigma^3  \exp\left(-\frac{|\mathbf{r}_i-\mathbf{r}^0_j|^2} {4\sigma^2} \right). $$
 
-The kernel is finally normalized, such that $ \tilde{k}_{\chi_0}(\chi_0)=1 $, in the following way,
+The kernel is finally normalized, such that $ k_{\chi_0}(\chi_0)=1 $, in the following way,
 
 $$ \tilde{k}_{\chi_0}(\chi)=\frac{1}{n}\sum\limits_{i\in\chi}\sum\limits_{j\in\chi_0}\exp\left(-\frac{|\mathbf{r}_i-\mathbf{r}^0_j|^2}{4\sigma^2}\right), $$
 
