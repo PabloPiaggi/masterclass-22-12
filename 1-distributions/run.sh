@@ -13,6 +13,7 @@ do
                 sed "s/replace/$sigma/g" ../plumed-base.dat > plumed.dat
                 mpiexec plumed driver --plumed plumed.dat --mf_dcd out.dcd > plumed.out
 		cp histo histo-$sigma
+		cp COLVAR COLVAR-$sigma
 		cd ..
         done
 	# Calculate the overlap using a python script
