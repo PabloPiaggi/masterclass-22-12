@@ -192,11 +192,16 @@ Feel free to share these values and your plots on Slack as you get them.
 
 We now move to the first method to calculate chemical potentials, the bulk interconversion method.
 This method is based on simulating the reversible interconversion of the liquid to the solid and calculating the difference in chemical potential using:
-$$ \Delta\mu = -\frac{1}{\beta N} \ln \left ( Z_\beta / Z_\alpha \right) $$
+
+$$ \Delta\mu=-\frac{1}{\beta N} \ln \left ( Z_\beta / Z_\alpha \right) $$
+
 with $Z_\alpha$ and $Z_\beta$ the partition functions restricted to each phase.
 These are computed with the formulae,
-$$ Z_\alpha = \int\limits_{-\infty}^{s^*} ds \int d\mathbf{R} e^{-\beta [U(\mathbf{R},V)+PV]} \delta (s-s(\mathbf{R},V)) $$
-$$ Z_\beta = \int\limits_{s^*}^{\infty} ds \int d\mathbf{R} e^{-\beta [U(\mathbf{R},V)+PV]} \delta (s-s(\mathbf{R},V)) $$
+
+$$ Z_\alpha=\int\limits_{-\infty}^{s^*} ds \int d\mathbf{R} e^{-\beta [U(\mathbf{R},V)+PV]} \delta (s-s(\mathbf{R},V)) $$
+
+$$ Z_\beta=\int\limits_{s^*}^{\infty} ds \int d\mathbf{R} e^{-\beta [U(\mathbf{R},V)+PV]} \delta (s-s(\mathbf{R},V)) $$
+
 assuming that the collective variable $s$ can separate well the phases at threshold $s^*$.
 The ratio of the partition functions is easy to calculate if we have a simulation in which both phases are visited, as we shall see below.
 
@@ -306,7 +311,9 @@ The idea of the method is to simulate the liquid and the solid (or any pair of p
 Then, we add a bias potential such that we sample reversibly the growth and melting of a portion of the system, for instance, one layer of the solid.
 From this simulation we can compute the free energy as a function of the number of solid-like atoms in the system $G(N)$.
 This quantity is connected to the chemical potential in the following way,
-$$G(N) \approx \Delta\mu \: N + const $$
+
+$$G(N) \approx \Delta\mu N + const $$
+
 This equation is an approximation and rests on several assumptions, yet it tells us that the chemical potential is the slope of the FES with respect to N.
 
 The files to perform a biased coexistence simulation with 2048 atoms can be found in the folder 3-biased-coexistence/2048atoms/400K.
