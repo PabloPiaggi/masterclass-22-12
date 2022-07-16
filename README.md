@@ -50,7 +50,7 @@ An important consideration, that follows from the symmetry properties of lattice
 To judge if an environment is compatible with a given crystal structure, we will have to compare it against $M$ reference environments.
 
 The environment similarity kernel is a way to quantify the similarity between environments.
-This idea was introduced in this article \cite Piaggi-JCP-2019 and is based on the [SOAP descriptors](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.87.184115) of Bartok et al.
+This idea was introduced in [this article](https://aip.scitation.org/doi/full/10.1063/1.5102104) and is based on the [SOAP descriptors](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.87.184115) of Bartok et al.
 Unlike SOAPs, this kernel will be non rotationally invariant and thus will break the SO(3) symmetry of space.
 The starting point for the definition of our CV is the local atomic density around a given atom.
 We consider an environment $\chi$ around this atom and we define the density by,
@@ -165,7 +165,7 @@ DUMPGRID GRID=hh FILE=histo
 
 Here, SIGMA=replace has to be replaced by an appropriate value. 
 The action HISTOGRAM will compute the normalized histogram using all per-atom values of the kernel and the action DUMPGRID will write it to a file named histo.
-We have to compute these histograms for different values of SIGMA and this can be done with the script run.sh in the folder 1-distributions (execute the command ./run.sh > results.txt).
+We have to compute these histograms for different values of SIGMA and this can be done with the script run.sh in the folder ```1-distributions``` (execute the command ```./run.sh > results.txt```).
 This script will use the PLUMED driver and the DCD trajectory files to calculate the distributions of the environment similarity kernel.
 Here's the command we are using inside run.sh to do this,
 ```
@@ -174,7 +174,9 @@ mpiexec plumed driver --plumed plumed.dat --mf_dcd out.dcd > plumed.out
 but you don't need to execute this yourself because it is done in the script run.sh.
 The script run.sh will also compute the overlap between the liquid and bcc distributions for different SIGMA.
 The overlap $O(p,q)$ between two distributions $p(x)$ and $q(x)$ can be defined in a variety of ways. Here we use,
-$$ O(p,q) = \int dx \: min[p(x),q(x)] $$
+
+$$ O(p,q)=\int dx \: min[p(x),q(x)] $$
+
 The output of the script will have two columns, the sigma value used and the overlap between the liquid and solid distributions of the kernel for that sigma.
 Plot sigma vs overlap. 
 Nice results? Upload them to Slack!
@@ -207,8 +209,7 @@ The ratio of the partition functions is easy to calculate if we have a simulatio
 
 In a standard MD simulation we would only observe a single phase, and in order to see interconversion we need to apply a bias potential.
 Here we will use OPES to construct a bias potential as a function of the environment similarity kernels.
-If you prefer to use METAD or VES , you can do so, adapting the input accordingly.
-Otherwise, you may want to have a look at the \ref masterclass-22-03.
+If you prefer to use METAD or VES, you can do so, adapting the input accordingly.
 
 The environment similarity kernel, which are per-atom quantities, can be combined into a global quantity by evaluating how many have a value larger than some threshold.
 In file ```2-bulk-interconversion/250atoms/400K/plumed.dat``` we can see the input for a simulation with 250 atoms at 400 K,
@@ -246,7 +247,7 @@ UPPER_WALLS ARG=diff AT=0.1 KAPPA=100000 EXP=2 LABEL=uwall STRIDE=2
 In a nutshell, we are limiting the increase of Q6 (rotationally invariant) not followed by an increase in ENVIRONMENTSIMILARITY (non rotationally invariant).
 
 The first task of this exercise is to run a few simulations at different temperatures (say, 380 K, 400 K, 420K, or more if you have a computer cluster available).
-In order to run the simulation you have to execute on the folder 2-bulk-interconversion/250atoms/400K the command:
+In order to run the simulation you have to execute on the folder ```2-bulk-interconversion/250atoms/400K``` the command:
 ```
 mpiexec lmp -in start.lmp > /dev/null &
 ```
@@ -278,7 +279,9 @@ python fes.py
 ```
 This script is based in constructing a histogram $h(s)$ with weights $e^{\beta V}$ where $V$ the bias potential.
 The FES is then obtained using,
-$$ G(s) = -\frac{1}{\beta}\ln h(s) $$
+
+$$ G(s)=-\frac{1}{\beta}\ln h(s) $$
+
 You can plot the FES at all the temperatures you have run simulations at.
 How does the FES look like?
 What does each basin represent?
@@ -316,13 +319,13 @@ $$G(N) \approx \Delta\mu N + const $$
 
 This equation is an approximation and rests on several assumptions, yet it tells us that the chemical potential is the slope of the FES with respect to N.
 
-The files to perform a biased coexistence simulation with 2048 atoms can be found in the folder 3-biased-coexistence/2048atoms/400K.
+The files to perform a biased coexistence simulation with 2048 atoms can be found in the folder ```3-biased-coexistence/2048atoms/400K```.
 The LAMMPS input script start.lmp will do a lot of things automatically for us:
 - Create a bcc crystal and equilibrate it in NPT
 - Determine the equilibrium box dimensions and fix the lengths in x and y to their equilibrium value at the simulated temperature
 - Replicate the crystal along the z axis and melt half of the crystal in the box
-- Equilibrate the liquid-solid surface under the constraint of having around half the atoms with solid-like environments in the N$P_z$T ensemble
-- Production run with a bias potential in the N$P_z$T ensemble
+- Equilibrate the liquid-solid surface under the constraint of having around half the atoms with solid-like environments in the NPzT ensemble
+- Production run with a bias potential in the NPzT ensemble
 
 The equilibration under a constraint is done using the following PLUMED input found on plumed.equil.dat,
 ```
