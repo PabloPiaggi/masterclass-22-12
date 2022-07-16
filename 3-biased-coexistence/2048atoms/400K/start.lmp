@@ -1,0 +1,114 @@
+echo both
+
+######################################
+# Change temperature here
+######################################
+variable	temperature equal 400
+######################################
+
+variable	temperatureMelt equal 500.
+variable	pressure equal 1.
+variable	tempDamp equal 0.1
+variable	pressureDamp equal 1.0
+variable	seed equal 74581
+variable 	mass equal 22.98977
+variable	thermo_out_freq equal 500
+variable	restart_out_freq equal 500
+variable	dump_out_freq equal 500
+
+timer 		timeout 23:50:00 every 1000
+units		metal
+lattice 	bcc 4.228
+region          box block 0 8 0 8 0 8
+create_box      1 box
+create_atoms    1 box
+mass            1 ${mass}
+neigh_modify    delay 10 every 1
+pair_style 	eam/fs
+pair_coeff 	* * Na_MendelevM_2014.eam.fs Na
+timestep	0.002
+thermo          ${thermo_out_freq}
+thermo_style 	custom step temp pe lx ly lz vol pxx pyy pzz press
+restart 	${restart_out_freq} Restart.lmp Restart2.lmp
+
+# Minimize and equilibrate
+
+minimize	1.e-4 1.e-6 100 1000
+
+variable	myvol equal vol
+
+fix             1 all nph iso ${pressure} ${pressure} ${pressureDamp}
+fix             2 all temp/csvr ${temperature} ${temperature} ${tempDamp} ${seed}
+fix		3 all momentum 10000 linear 1 1 1 angular
+fix 		vector_vol all vector 10 v_myvol
+
+velocity        all create ${temperature} ${seed} dist gaussian
+run             100000 # 0.2 ns
+
+unfix		1
+unfix		2
+unfix		3
+
+variable 	equil_side equal ave(f_vector_vol)^(1./3.)
+
+# Set box dimensions in x and y to the average
+
+fix             1 all nph z ${pressure} ${pressure} ${pressureDamp}
+fix             2 all temp/csvr ${temperature} ${temperature} ${tempDamp} ${seed}
+fix		3 all momentum 10000 linear 1 1 1 angular
+fix 		4 all deform 1 x final 0.0 ${equil_side} y final 0.0 ${equil_side} units box
+
+run             50000 # 0.1 ns
+
+unfix		1
+unfix		2
+unfix		3
+unfix		4
+unfix 		vector_vol
+
+# melt half the box in NPT
+replicate 	1 1 2
+variable        meltPt equal (zlo)+(lz)/2.0
+region          meltReg plane 0 0 ${meltPt} 0 0 -1 units box
+group           halfBox region meltReg
+
+fix             1 halfBox nph z ${pressure} ${pressure} ${pressureDamp} dilate halfBox
+fix             2 halfBox temp/csvr ${temperatureMelt} ${temperatureMelt} ${tempDamp} ${seed}
+velocity        halfBox create ${temperatureMelt} ${seed} dist gaussian
+
+run             50000 # 0.1 ns
+
+unfix		1
+unfix		2
+
+# Equilibrate interface
+
+fix             1 all plumed plumedfile plumed.equil.dat outfile plumed.equil.out 
+fix             2 all nph z ${pressure} ${pressure} ${pressureDamp}
+fix             3 all temp/csvr ${temperature} ${temperature} ${tempDamp} ${seed}
+fix		4 all momentum 10000 linear 1 1 1 angular
+
+velocity        all create ${temperature} ${seed} dist gaussian
+run             50000 # 0.1 ns
+
+unfix		1
+unfix		2
+unfix		3
+unfix		4
+
+reset_timestep	0
+
+# Production
+
+
+dump            myDump all atom ${dump_out_freq} dump.na
+dump_modify	myDump append yes
+
+fix             1 all plumed plumedfile plumed.dat outfile plumed.out 
+fix             2 all nph z ${pressure} ${pressure} ${pressureDamp}
+fix             3 all temp/csvr ${temperature} ${temperature} ${tempDamp} ${seed}
+fix		4 all momentum 10000 linear 1 1 1 angular
+
+run             50000000 upto # 100 ns
+
+write_data	data.final
