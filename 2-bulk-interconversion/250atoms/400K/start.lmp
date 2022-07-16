@@ -7,7 +7,7 @@ variable        temperature equal 400
 ######################################
 
 variable	pressure equal 1.
-variable	tempDamp equal 0.1 # approx 0.1 ps
+variable	tempDamp equal 0.1
 variable	pressureDamp equal 1.0
 variable	seed equal 74581
 variable 	mass equal 22.98977
