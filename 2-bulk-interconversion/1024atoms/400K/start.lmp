@@ -24,7 +24,7 @@ create_atoms    1 random 1024 ${seed} box
 mass            1 ${mass}
 neigh_modify    delay 10 every 1
 pair_style 	eam/fs
-pair_coeff 	* * Na_MendelevM_2014.eam.fs Na
+pair_coeff 	* * ../../../Na_MendelevM_2014.eam.fs Na
 timestep	0.002
 thermo          ${thermo_out_freq}
 thermo_style 	custom step temp pe press lx

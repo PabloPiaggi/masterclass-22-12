@@ -95,7 +95,8 @@ This fact greatly simplifies the task of characterizing the structure: all that 
 We will use an embedded atom model (EAM) for sodium that is described in [this paper](https://aip.scitation.org/doi/full/10.1063/1.4916741).
 The melting temperature is supposed to be 366 K. Let's see if we can reproduce that result.
 
-## Exercise 1: Choosing reference environments and appropriate $\sigma$ values
+## Exercises
+### Exercise 1: Choosing reference environments and appropriate $\sigma$ values
 
 In the case of the bcc structure, the reference environment for the environment similarity CV can be chosen automatically using the following PLUMED input:
 
@@ -187,7 +188,7 @@ Determine 1) the maximum for each distribution, and 2) the kernel value for whic
 We will need these values for the next exercise!
 Feel free to share these values and your plots on Slack as you get them.
 
-## Exercise 2: Bulk interconversion
+### Exercise 2: Bulk interconversion
 
 We now move to the first method to calculate chemical potentials, the bulk interconversion method.
 This method is based on simulating the reversible interconversion of the liquid to the solid and calculating the difference in chemical potential using:
@@ -297,7 +298,7 @@ You can use this fact to extrapolate to the thermodynamic limit.
 Did you get a better coexistence temperature now?
 Which system sizes are big enough to make an error of about 1 K in the coexistence temperature?
 
-## Exercise 3: Biased coexistence
+### Exercise 3: Biased coexistence
 
 In this section we will use a different method to calculate the difference in chemical potential between the liquid and the solid.
 I call it **biased coexistence** and it is a generalization of the [interface pinning](https://aip.scitation.org/doi/full/10.1063/1.4818747) method.
@@ -368,7 +369,7 @@ and is in column 13 of the COLVAR file.
 Discuss the advantages and disadvantages of the two methods presented above.
 Which one did you like best? Why?
 
-## Exercise 4: Thermodynamic integration along isobars
+### Exercise 4: Thermodynamic integration along isobars
 
 Perhaps the simplest method to compute chemical potential differences is thermodynamic integration.
 Here we will discuss the version of the method in which the integration is performed along isobars.
@@ -379,7 +380,9 @@ It is therefore a perfect complement for the methods described above.
 PLUMED is not required for this exercise, but we will use the results obtained here to validate the methods described above.
 
 The method relies on the following thermodynamic identity,
-$$ \frac{\Delta\mu(T,P)}{T} = \frac{\Delta\mu(T_0,P)}{T_0} - \int\limits_{T_0}^T \frac{\Delta h(T',P)}{T'^2} dT' $$
+
+$$ \frac{\Delta\mu(T,P)}{T}=\frac{\Delta\mu(T_0,P)}{T_0}-\int\limits_{T_0}^T\frac{\Delta h(T',P)}{T'^2}dT' $$
+
 where $T_0$ is the reference temperature at which $\Delta\mu$ is known, and $\Delta h$ is the per-atom enthalpy difference.
 If  $T_0$ is the coexistence temperature, the first term on the RHS vanishes.
 
