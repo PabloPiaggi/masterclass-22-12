@@ -1,7 +1,8 @@
 # PLUMED Masterclass 22.12
 # Liquid-solid chemical potential differences with the environment similarity CV 
 
-Authors: Pablo Piaggi
+Author: Pablo Piaggi
+
 Date: July 18, 2022
 
 ## Aims
