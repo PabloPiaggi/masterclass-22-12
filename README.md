@@ -194,7 +194,7 @@ Feel free to share these values and your plots on Slack as you get them.
 ### Exercise 2: Bulk interconversion
 
 <p float="left">
-  <img src="https://github.com/PabloPiaggi/masterclass-22-12/raw/master/interconversion.png" width="600"> 
+  <img src="https://github.com/PabloPiaggi/masterclass-22-12/raw/main/interconversion.png" width="600"> 
 </p>
 
 We now move to the first method to calculate chemical potentials, the bulk interconversion method.
@@ -314,7 +314,7 @@ Which system sizes are big enough to make an error of about 1 K in the coexisten
 ### Exercise 3: Biased coexistence
 
 <p float="left">
-  <img src="https://github.com/PabloPiaggi/masterclass-22-12/raw/master/coexistence.png" width="600"> 
+  <img src="https://github.com/PabloPiaggi/masterclass-22-12/raw/main/coexistence.png" width="600"> 
 </p>
 
 In this section we will use a different method to calculate the difference in chemical potential between the liquid and the solid.
