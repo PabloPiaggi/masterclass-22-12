@@ -79,7 +79,7 @@ The kernel can be generalized to crystal structures described as a lattice with 
 As discussed above, in this case there is more than one type of environment.
 We consider the case of $M$ environments $X = \chi_1,\chi_2,...,\chi_M$ and we define the kernel through a best match strategy:
 
-$$ \tilde{k}_{X}(\chi)= \frac{1}{\lambda}\log\left( \sum\limits_{l=1}^{M} \exp\left(\lambda \tilde{k}_{\chi_l}(\chi)\right)\right). $$
+$$ \tilde{k}_{X}(\chi)= \frac{1}{\lambda}\log\left( \sum_{l=1}^{M} \exp\left(\lambda \tilde{k}_{\chi_l}(\chi)\right)\right). $$
 
 For a large enough $\lambda$ this expression will select the largest $\tilde{k}_{\chi_l}(\chi)$ with $\chi_l\in X$.
 
