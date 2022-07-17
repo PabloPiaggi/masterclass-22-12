@@ -175,7 +175,7 @@ but you don't need to execute this yourself because it is done in the script run
 The script run.sh will also compute the overlap between the liquid and bcc distributions for different SIGMA.
 The overlap $O(p,q)$ between two distributions $p(x)$ and $q(x)$ can be defined in a variety of ways. Here we use,
 
-$$ O(p,q)=\int dx \: min[p(x),q(x)] $$
+$$ O(p,q)=\int dx \min[p(x),q(x)] $$
 
 The output of the script will have two columns, the sigma value used and the overlap between the liquid and solid distributions of the kernel for that sigma.
 Plot sigma vs overlap. 
