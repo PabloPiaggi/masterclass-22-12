@@ -348,7 +348,6 @@ opes: OPES_METAD ARG=cv.morethan PACE=500 BARRIER=100 TEMP=400 STRIDE=2
 uwall: UPPER_WALLS ARG=cv.morethan AT=1152. KAPPA=0.1 EXP=2 STRIDE=2
 lwall: LOWER_WALLS ARG=cv.morethan AT=896. KAPPA=0.1 EXP=2 STRIDE=2
 ```
-\endplumedfile
 
 Run the simulation at 400 K using the command,
 ```
