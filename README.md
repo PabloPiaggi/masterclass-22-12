@@ -107,7 +107,7 @@ ENVIRONMENTSIMILARITY ...
  CRYSTAL_STRUCTURE=BCC
  LATTICE_CONSTANTS=0.423
  SIGMA=0.07
-... ENVIRONMENTSIMILARITY
+...
 ```
 
 Here we have chosen the bcc crystal structure with a lattice constant of 0.423 nm which is appropriate for bcc sodium.
@@ -151,7 +151,7 @@ ENVIRONMENTSIMILARITY ...
  LATTICE_CONSTANTS=0.423
  LABEL=s
  MEAN
-... ENVIRONMENTSIMILARITY
+...
 
 hh: HISTOGRAM ...
    DATA=s
@@ -227,7 +227,7 @@ ENVIRONMENTSIMILARITY ...
  LABEL=cv
  MORE_THAN={CUBIC D_0=0.38 D_MAX=0.80}
  MEAN
-... ENVIRONMENTSIMILARITY
+...
 ```
 Here you see that we are calculating the MEAN and the number of atoms that have a value of the kernel MORE_THAN something.
 Here, instead of having a strict threshold at some value, we have a continuous and differentiable switching function that is 0 below 0.38, 1 above 0.80, and changes smoothly from 0 to 1 between these values.
@@ -298,7 +298,6 @@ I prepared a basic python script that you can use to computed the difference in 
 You can find it in ```2-bulk-interconversion/250atoms/chemical_potentials.py```.
 You have to edit the highlighted lines to include more temperatures in the calculation and in the plot that it will generate.
 If you have at least two temperatures, it will fit a straight line and estimate the coexistence temperature from the condition that the chemical potential difference is zero at coexistence.
-Got nice results? I'll **buy a coffee** to the first person that uploads a plot of the chemical potentials vs temperature to Slack! Of course, I'll buy it next time we meet in person, if ever.
 Do the chemical potential differences depend linearly on the temperature?
 What melting temperature do you find?
 How does it compare with the reference value (366 K) that has been reported?
@@ -380,7 +379,7 @@ ENVIRONMENTSIMILARITY ...
  CRYSTAL_STRUCTURE=BCC
  LATTICE_CONSTANTS=0.423
  MORE_THAN={CUBIC D_0=0.5525 D_MAX=0.55251}
-... ENVIRONMENTSIMILARITY
+...
 ```
 and is in column 13 of the COLVAR file.
 
