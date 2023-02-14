@@ -22,7 +22,7 @@ flowchart TB;
   click B "ref2" "A previous tutorial that introduces metadynamics simulation";
   click C "ref3" "A previous tutorial that introduces the OPES simulations";
   click D "video1" "A lecture that was given on July 18th 2022 as part of the plumed masterclass series that introduces you to the exercises in this lesson";
-  click E "README.md" "Instructions for the exercise that you are supposed to complete";
+  click E "INSTRUCTIONS.md" "Instructions for the exercise that you are supposed to complete";
   click F "video2" "A lecture that was given on July 25th 2022 as part of the plumed masterclass series that goes through the solutions to the exercises in the lesson";
   click G "ExerciseSolutions.ipynb" "A python notebook where the answers to the exericses are discussed";
 ```
